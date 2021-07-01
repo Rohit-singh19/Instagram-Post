@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instagram Post</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css">
+</head>
+<body>
+    <div class="container">
+        <div class="post">
+            <div class="head">
+                <div class="profile-detail">
+                    <div class="p-img">
+                        <img src="Images/profile.jpg" alt="">
+                    </div>
+                    <div class="name">Jonny</div>
+                </div>
+                <div class="more">
+                    <i class="fas fa-ellipsis-h"></i>
+                </div>
+            </div>
+            <div class="post-img">
+                <img src="Images/post.jpg" alt="">
+                <i class="fas fa-heart"></i>
+            </div>
+            <div class="reactions head">
+                <div class="react-links">
+                    <i id="heart" class="far fa-heart"></i>
+                    <i class="far fa-comment"></i>
+                    <i class="far fa-paper-plane"></i>
+                </div>
+                <div class="save">
+                    <i class="far fa-bookmark"></i>
+                </div>
+            </div>
+            <div class="react-detail">
+                2,406 likes
+            </div>
+            <div class="caption">
+                <div class="profile-name">
+                    Jonny
+                </div>
+                <div class="post-cap">
+                    No More Captions needed....
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        const heart = document.getElementById('heart');
+        const postImg = document.querySelector('.post-img');
+
+        postImg.addEventListener('dblclick', () =>{
+
+            heart.classList.replace('far','fas');
+            heart.style.color ='red';
+            document.querySelector('.react-detail').innerHTML ='2,407 likes';
+            postImg.classList.add('active');
+
+            setInterval(() => {
+                postImg.classList.remove('active');
+            }, 1000);
+        });
+
+        heart.addEventListener('click',handleHeart)
+
+        function handleHeart() {
+            var attr = heart.getAttributeNode("class").value;
+
+            if(attr == 'far fa-heart'){
+                heart.classList.replace('far','fas');
+                heart.style.color = 'red';
+                document.querySelector('.react-detail').innerHTML = '2,407 likes';
+            }
+            else if(attr == 'fas fa-heart'){
+                heart.classList.replace('fas','far');
+                heart.style.color = 'white';
+                document.querySelector('.react-detail').innerHTML = '2,406 likes';
+            }
+        }
+    </script>
+</body>
+</html>
